@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Product list with cart</title>
+
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <div class="product-list-wrapper">
+    <h2>Desserts</h2>
+    <div class="product-list"></div>
+  </div>
+  <div class="cart-list">
+    <h2 class="cart-title">Your Cart(0)</h2>
+    <div class="cart-items-container"></div> 
+    <div class="empty-cart">
+      <img src="/assets/images/illustration-empty-cart.svg">
+      <p>Your added items will appear here</p>
+    </div>
+  
+  <div class="cart-total"></div>
+  <div class="cart-deliverMsg" style="display: none;">
+ <img src="/assets/images/icon-carbon-neutral.svg">
+ <p>This is <span>carbon-neutral </span>delivery</p>
+  </div>
+  <button class="confirm-oder" style="display: none;">confirm order</button>
+
+</div>
+</div>
+<div id="modal" class="modal-overlay">
+<div class="modal hidden">
+  <div class="modal-title">
+    <img src="/assets/images/icon-order-confirmed.svg">
+    <h2>Order Confirmed</h2>
+    <p>we hope you enjoyed your food!</p>
+    </div>
+    <div class="modal-pdt-list"></div>
+    <button class="modal-btn-new-order">Start New Order</button>
+</div>
+</div>
+</body>
+</html>
+
+
+
