@@ -266,8 +266,11 @@ button.confirm-oder {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   animation: slideDown 0.4s ease-out;
   position: absolute;
-  top: 34%;
-  right: 37%;
+  top: 14%;
+  left: 35%;
+  overflow-y: scroll;
+  height: auto;
+  max-height: 600px;
 }
 .modal-title h2 {
   margin-bottom: 0;

@@ -29,21 +29,32 @@ function showProductList() {
   listContainer.innerHTML = "";
 
   productList = JSON.parse(localStorage.getItem("productList")) || [];
+  cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
 
   productList.forEach((item, index) => {
+    const cartItem = cartProducts.find((p) => p.name === item.name);
+    const isInCart = Boolean(cartItem);
+    const quantity = cartItem?.quantity || 1;
+
     const listItem = document.createElement("div");
     listItem.className = "listItem";
     listItem.setAttribute("data-item-index", index);
     listItem.innerHTML = `
         <div class="pdt-img-wrapper">
-          <img class="item-pdt-img" src="${item.image.desktop}" alt="${item.name}" width="200px">
+          <img class="item-pdt-img" ${isInCart ? "red-border" : ""}"  src="${
+      item.image.desktop
+    }" alt="${item.name}" width="200px">
           <div class="productList-btn">
-            <button class="addToCart" data-index="${index}">
+            <button class="addToCart ${
+              isInCart ? "hidden" : ""
+            }" data-index="${index}">
               <img src="/assets/images/icon-add-to-cart.svg"> Add to cart
             </button>
-            <div class="quantity-container hidden" data-index="${index}">
+            <div class="quantity-container  ${
+              isInCart ? "show" : "hidden"
+            }" data-index="${index}">
               <button class="quantity-button decrement">-</button>
-              <input type="number" class="quantity-input" value="1" min="0" max="10">
+              <input type="number" class="quantity-input" value="${quantity}" min="0" max="10">
               <button class="quantity-button increment">+</button>
             </div>
           </div>
@@ -168,6 +179,7 @@ document.addEventListener("click", function (event) {
     if (modal) {
       modal.classList.add("hidden");
       modalOverlay.style.display = "none";
+      localStorage.clear();
       window.location.reload();
     }
   }
@@ -297,3 +309,19 @@ function confirmModal() {
   modalpdtList.appendChild(modalContainer);
   //   });
 }
+
+const modal = document.querySelector(".modal");
+const modalOverlay = document.getElementById("modal");
+
+modalOverlay?.addEventListener("click", function (event) {
+  console.log("oo", event.target);
+  console.log("oo modal", modal);
+  if (event.target === modalOverlay) {
+    console.log("yes");
+    modal.classList.add("hidden");
+    modalOverlay.style.display = "none";
+    localStorage.clear();
+    window.location.reload();
+  }
+  console.log("no");
+});
